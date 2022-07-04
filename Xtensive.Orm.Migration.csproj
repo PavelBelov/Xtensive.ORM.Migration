@@ -3,6 +3,12 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>net5.0</TargetFramework>
+    <Company>X-tensive</Company>
+    <Authors>Pavel Belov</Authors>
+    <Description>Migration tool for Xtensive.ORM</Description>
+    <PackageProjectUrl>https://github.com/PavelBelov/Xtensive.ORM.Migration</PackageProjectUrl>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/PavelBelov/Xtensive.ORM.Migration.git</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
