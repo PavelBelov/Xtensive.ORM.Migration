@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Xtensive.Orm.Migration": {
+      "commandName": "Project",
+      "commandLineArgs": ""
+    }
+  }
+}
