@@ -1,5 +1,6 @@
 # Xtensive.ORM.Migration
-##Migration tool for Xtensive.ORM
+
+## Migration tool for Xtensive.ORM
 
 This tool can be used in case when you use Xtensive.ORM and want to migrate from one database to another.
 
