@@ -9,6 +9,8 @@
     <PackageProjectUrl>https://github.com/PavelBelov/Xtensive.ORM.Migration</PackageProjectUrl>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/PavelBelov/Xtensive.ORM.Migration.git</RepositoryUrl>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
