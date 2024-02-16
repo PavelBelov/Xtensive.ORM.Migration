@@ -132,7 +132,7 @@ namespace Xtensive.Orm.Migration
 				throw new Exception(sb.ToString());
 		}
 
-		private static T InLoaggerAction<T>(string msg, Func<T> f)
+		private static T InLoggerAction<T>(string msg, Func<T> f)
 		{
 			Logger.Text(ConsoleColor.White, msg + " ", false);
 			try
@@ -167,33 +167,33 @@ namespace Xtensive.Orm.Migration
 				return;
 			}
 
-			var src = InLoaggerAction("src", () => DatabaseEngine.Create(startParams[0], startParams[1]));
-			var dst = InLoaggerAction("dst", () => DatabaseEngine.Create(startParams[2], startParams[3]));
+			var src = InLoggerAction("src", () => DatabaseEngine.Create(startParams[0], startParams[1]));
+			var dst = InLoggerAction("dst", () => DatabaseEngine.Create(startParams[2], startParams[3]));
 
-			var srcSchema = InLoaggerAction("src schema", () => src.GetSchema());
-			var dstSchema = InLoaggerAction("dst schema", () => dst.GetSchema());
+			var srcSchema = InLoggerAction("src schema", () => src.GetSchema());
+			var dstSchema = InLoggerAction("dst schema", () => dst.GetSchema());
 
-			var srcXml = InLoaggerAction("src Metadata.Extension", () =>
+			var srcXml = InLoggerAction("src Metadata.Extension", () =>
 			{
 				var text = src.ReadAllData(srcSchema.Tables["Metadata.Extension"], "Text")[0][0] as string;
 				return XDocument.Parse(text);
 			});
-			var dstXml = InLoaggerAction("dst Metadata.Extension", () =>
+			var dstXml = InLoggerAction("dst Metadata.Extension", () =>
 			{
 				var text = dst.ReadAllData(dstSchema.Tables["Metadata.Extension"], "Text")[0][0] as string;
 				return XDocument.Parse(text);
 			});
 			
-			var tablesDictionary = InLoaggerAction("Metadata.Extension compare", () => CheckMapTables(srcSchema, srcXml, dstSchema, dstXml));
+			var tablesDictionary = InLoggerAction("Metadata.Extension compare", () => CheckMapTables(srcSchema, srcXml, dstSchema, dstXml));
 			#region CompareMetadata
-			var srcMetadata = InLoaggerAction("src Metadata.Assembly", () =>
+			var srcMetadata = InLoggerAction("src Metadata.Assembly", () =>
 			{
 				var table = srcSchema.Tables.Where(t => t.Name == "Metadata.Assembly").SingleOrDefault();
 				if (table == null)
 					throw new Exception($"Metadata.Assembly table not found");
 				return src.ReadAllData(table, "Name", "Version").ToDictionary(x => x[0].ToString(), x => x[1].ToString()); ;
 			});
-			var dstMetadata = InLoaggerAction("dst Metadata.Assembly", () =>
+			var dstMetadata = InLoggerAction("dst Metadata.Assembly", () =>
 			{
 				var table = dstSchema.Tables.Where(t => t.Name == "Metadata.Assembly").SingleOrDefault();
 				if (table == null)
@@ -225,7 +225,7 @@ namespace Xtensive.Orm.Migration
 
 			foreach (var srcSeq in srcSchema.Sequences)
 			{
-				InLoaggerAction($"Sequences {srcSeq.Name} {srcSeq.SequenceDescriptor.LastValue}",()=>{
+				InLoggerAction($"Sequences {srcSeq.Name} {srcSeq.SequenceDescriptor.LastValue}",()=>{
 					var dstSeq = dstSchema.Sequences.Single(s => s.Name == srcSeq.Name);
 					var curValue = src.GetSequenceValue(srcSeq);
 					var newVal = (curValue / dstSeq.SequenceDescriptor.Increment + 1) * dstSeq.SequenceDescriptor.Increment;
@@ -242,7 +242,7 @@ namespace Xtensive.Orm.Migration
 			}
 
 			#region RemoveConstarins
-			InLoaggerAction("remove indexes", () =>
+			InLoggerAction("remove indexes", () =>
 			{
 				dst.DoAction((connection) =>
 				{
@@ -258,7 +258,7 @@ namespace Xtensive.Orm.Migration
 				});
 				return true;
 			});
-			InLoaggerAction("remove constraints", () =>
+			InLoggerAction("remove constraints", () =>
 			{
 				return dst.DoFunc((connection) =>
 				{
@@ -282,7 +282,7 @@ namespace Xtensive.Orm.Migration
 					return result;
 				});
 			});
-			dstSchema = InLoaggerAction("check constraints", () =>
+			dstSchema = InLoggerAction("check constraints", () =>
 			{
 				var newSchema = dst.GetSchema();
 				var sb = new StringBuilder();
@@ -295,7 +295,7 @@ namespace Xtensive.Orm.Migration
 			});
 			#endregion
 
-			InLoaggerAction("clearing dst", () =>
+			InLoggerAction("clearing dst", () =>
 			{
 				dst.DoAction(connection =>
 				{
@@ -310,7 +310,7 @@ namespace Xtensive.Orm.Migration
 				});
 				return true;
 			});
-			InLoaggerAction("updating Metadata.Extension ", () =>
+			InLoggerAction("updating Metadata.Extension ", () =>
 			{
 				dst.DoAction(dstConnection =>
 				{

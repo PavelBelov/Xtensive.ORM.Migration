@@ -1,6 +1,4 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Xml.Linq;
@@ -15,7 +13,7 @@ namespace Xtensive.Orm.Migration
 		public Table DstTable { get; set; }
 		public List<MapColumn> Columns { get; private set; }
 
-		private void GetMappingFiels(XElement xFields, Dictionary<string, XElement> dict)
+		private void GetMappingFields(XElement xFields, Dictionary<string, XElement> dict)
 		{
 			foreach (var element in xFields.Elements())
 			{
@@ -24,7 +22,7 @@ namespace Xtensive.Orm.Migration
 				var child = element.Element("Fields");
 				if (child != null)
 				{
-					GetMappingFiels(child, dict);
+					GetMappingFields(child, dict);
 				}
 			}
 		}
@@ -32,9 +30,9 @@ namespace Xtensive.Orm.Migration
 		public string MapColumns(XElement srcX, XElement dstX, MapTable acancestor)
 		{
 			var srcXml = new Dictionary<string, XElement>();
-			GetMappingFiels(srcX.Element("Fields"), srcXml);
+			GetMappingFields(srcX.Element("Fields"), srcXml);
 			var dstXml = new Dictionary<string, XElement>();
-			GetMappingFiels(dstX.Element("Fields"), dstXml);
+			GetMappingFields(dstX.Element("Fields"), dstXml);
 			return MapColumnsasInternal(srcXml, dstXml, acancestor);
 
 		}
@@ -43,10 +41,10 @@ namespace Xtensive.Orm.Migration
 		{
 			var srcXml = new Dictionary<string, XElement>();
 			foreach (var x in srcX)
-				GetMappingFiels(x.Element("Fields"), srcXml);
+				GetMappingFields(x.Element("Fields"), srcXml);
 			var dstXml = new Dictionary<string, XElement>();
 			foreach (var x in dstX)
-				GetMappingFiels(x.Element("Fields"), dstXml);
+				GetMappingFields(x.Element("Fields"), dstXml);
 			return MapColumnsasInternal(srcXml, dstXml, acancestor);
 		}
 
