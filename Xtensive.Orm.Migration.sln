@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Xtensive.Orm.Migration", "Xtensive.Orm.Migration.csproj", "{2A966FC4-B8B3-4798-ABBD-8C9E7A04832A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xtensive.Orm.Migration.5.0", "Xtensive.Orm.Migration.5.0.csproj", "{04C36A54-6D35-405A-A25A-0617A7743A98}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xtensive.Orm.Migration.7.0", "Xtensive.Orm.Migration.7.0.csproj", "{D9173773-1F48-4120-84C2-A83733CDE17F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +13,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2A966FC4-B8B3-4798-ABBD-8C9E7A04832A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2A966FC4-B8B3-4798-ABBD-8C9E7A04832A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2A966FC4-B8B3-4798-ABBD-8C9E7A04832A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2A966FC4-B8B3-4798-ABBD-8C9E7A04832A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04C36A54-6D35-405A-A25A-0617A7743A98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04C36A54-6D35-405A-A25A-0617A7743A98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04C36A54-6D35-405A-A25A-0617A7743A98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04C36A54-6D35-405A-A25A-0617A7743A98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D9173773-1F48-4120-84C2-A83733CDE17F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D9173773-1F48-4120-84C2-A83733CDE17F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D9173773-1F48-4120-84C2-A83733CDE17F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D9173773-1F48-4120-84C2-A83733CDE17F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
