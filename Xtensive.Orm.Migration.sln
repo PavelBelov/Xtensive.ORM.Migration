@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32616.157
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xtensive.Orm.Migration.5.0", "Xtensive.Orm.Migration.5.0.csproj", "{04C36A54-6D35-405A-A25A-0617A7743A98}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xtensive.Orm.Migration.7.0", "Xtensive.Orm.Migration.7.0.csproj", "{D9173773-1F48-4120-84C2-A83733CDE17F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Xtensive.Orm.Migration.8.0", "Xtensive.Orm.Migration.8.0.csproj", "{D9173773-1F48-4120-84C2-A83733CDE17F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
